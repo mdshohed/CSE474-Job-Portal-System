@@ -1,0 +1,223 @@
+﻿@model JobPortal2.Models.JobPost
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<style>
+    .ftco-section {
+        padding: 7em 0;
+        position: relative;
+    }
+</style>
+
+@*<div>
+    <h4>JobPost</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.JobTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JobTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Education)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Education)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Experience)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Experience)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Specialization)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Specialization)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Salary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Salary)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompanyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompanyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JobType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JobType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Country)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Country)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.State)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.State)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PostedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vacancy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vacancy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JobNature)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JobNature)
+        </dd>
+
+    </dl>
+</div>*@
+
+
+<section id="content">
+    <div class="container content">
+       
+        <div class="container">
+            <div class="mg-available-rooms">
+               
+                <div class="mg-avl-rooms">
+                    <div class="mg-avl-room">
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <a href="#"><span class="fa fa-building-o" style="font-size: 50px"></span></a>
+                                <h3 class="mg-sec-left-title mt-3 fw-bold">@Html.DisplayFor(model => model.CompanyName)</h3>
+                                <h5 class="mg-sec-left-title"> @Html.DisplayFor(model => model.JobTitle)</h5>
+                                <p class="mg-sec-left-title text-danger">Last Date : @Html.DisplayFor(model => model.LastDate)</p>
+                            </div>
+                            <div class="col-sm-10">
+                                <div style="border-bottom: 1px solid #ddd;padding: 10px;font-size: 25px;font-weight: bold;color: #000;margin-bottom: 5px;">
+                                    <h5>@Html.DisplayFor(model => model.Education)</h5>
+                                    <h5 class="mg-sec-left-title">posted Date: @Html.DisplayFor(model => model.PostedDate)</h5>
+                                </div>
+                                <div class="row contentbody">
+                                    <div class="col-sm-6">
+                                        <ul>
+                                            <li><i class="fp-ht-bed"></i>Required No. of Employee's : @Html.DisplayFor(model => model.Vacancy)</li>
+                                            <li><i class="fp-ht-food"></i>Salary: @Html.DisplayFor(model => model.Salary)</li>
+                                            <li><i class="fa fa-sun-"></i>Duration of Employment: 9:00 AM - 5:00 PM</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <ul>
+                                            <li><i class="fp-ht-tv"></i>Prefered Sex : Male/Female</li>
+                                            <li><i class="fp-ht-computer"></i>Sector of Vacancy : @Html.DisplayFor(model => model.Salary)</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <p>Work Experience :</p>
+                                        <ul style="list-style: none;">
+                                            <li>@Html.DisplayFor(model => model.Experience) Years</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <p>Work  :</p>
+                                        <ul style="list-style: none;">
+                                            <li>@Html.DisplayFor(model => model.Experience) Years</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <p>Job Description:</p>
+                                        <ul style="list-style: none;">
+                                            <li>@Html.DisplayFor(model => model.Description)</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <p>Specialization:</p>
+                                        <ul style="list-style: none;">
+                                            <li>@Html.DisplayFor(model => model.Specialization)</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <p>Email :  @Html.DisplayFor(model => model.Email)</p>
+                                        <p>Location :  @Html.DisplayFor(model => model.Address)</p>
+                                        <p>Country :  @Html.DisplayFor(model => model.Country)</p>
+                                    </div>
+                                </div>
+                                <a href="@Url.Action("ApplicantForm", "Home", new { id = Model.JobId})" class="btn btn-main btn-next-tab text-white bg-success">Apply Now !</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section> 

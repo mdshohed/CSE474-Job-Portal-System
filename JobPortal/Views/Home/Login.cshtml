@@ -1,0 +1,74 @@
+﻿@model JobPortal2.Models.UserCredentialModel
+
+@{
+    ViewBag.Title = "Login";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="login-box">
+        <div class="login-logo">
+            <a>Job Finder Login Page</a>
+        </div>
+
+        <div class="login-box-body">
+            <p class="login-box-msg">Sign in to start your session</p>
+
+            <form method="post">
+                @*<div class="form-group has-feedback">
+            <input type="email" class="form-control" placeholder="Email">
+            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        </div>*@
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group has-feedback">
+                    @Html.LabelFor(model => model.userId, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10 mb-2 w-100">
+                        @Html.EditorFor(model => model.userId, new { htmlAttributes = new { @class = "form-control", @type = "number", @placeholder = "UserID" } })
+                        @Html.ValidationMessageFor(model => model.userId, "", new { @class = "text-danger glyphicon glyphicon-envelope form-control-feedback" })
+                    </div>
+                </div>
+                <div class="form-group has-feedback ">
+                    @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10 mb-2 w-100">
+                        @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", @type = "password", @placeholder = "Password" } })
+                        @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger glyphicon glyphicon-lock form-control-feedback" })
+                        @*<span class="glyphicon glyphicon-lock form-control-feedback"></span>*@
+                    </div>
+                </div>
+                @*<div class="form-group">
+                    @Html.LabelFor(model => model.RoleId, "RoleId", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10 mb-2">
+                        @Html.DropDownList("RoleId", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.RoleId, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
+
+                    <div class="row">
+                        <div class="col-xs-4 ">
+                            <button type="submit" class="btn btn-primary btn-block btn-flat">LOGIN</button>
+                        </div>
+                    </div>
+            </form>
+
+            <div class="social-auth-links text-center">
+                <p>- OR -</p>
+                <div>
+                    <a href="#" class="btn btn-block btn-social btn-facebook btn-flat mb-2 w-100">
+                        <i class="fa fa-facebook"></i> Sign in using Facebook
+                    </a>
+                </div>
+                <div>
+                    <a href="#" class="btn btn-block btn-social btn-google btn-flat w-100">
+                        <i class="fa fa-google-plus"></i> Sign in using Google+
+                    </a>
+                </div>
+            </div>
+
+            <a href="#">I forgot my password</a><br>
+            @Html.ActionLink("Register a new membership", "Create")
+        </div>
+    </div>
+
+}
+
+

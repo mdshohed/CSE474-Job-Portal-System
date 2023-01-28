@@ -1,0 +1,90 @@
+﻿@model JobPortal2.Models.User
+
+@{
+    ViewBag.Title = "Create";
+    //Layout = "~/Views/Shared/_Simple_Layout.cshtml";
+}
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="register-box">
+        <div class="register-logo">
+            <a>Job Finder Register Page</a>
+        </div>
+
+        <div class="register-box-body">
+            <p class="login-box-msg">Register a new membership</p>
+
+            <form action="" method="post">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group has-feedback">
+                    @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10  mb-2 w-100">
+                        @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @type = "text", @class = "form-control", @placeholder = "Full name" } })
+                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger glyphicon glyphicon-user form-control-feedback" })
+                    </div>
+                </div>
+                <div class="form-group has-feedback">
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10 mb-2 w-100">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @type = "email", @class = "form-control", @placeholder = "Email" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger glyphicon glyphicon-envelope form-control-feedback" })
+                    </div>
+                </div>
+                <div class="form-group has-feedback">
+                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10 mb-2 w-100">
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @type = "password", @class = "form-control", @placeholder = "Password" } })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger glyphicon glyphicon-log-in form-control-feedback" })
+                    </div>
+                </div>
+                <div class="form-group has-feedback">
+                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10 mb-2 w-100">
+                        @Html.EditorFor(model => model.Password, new{htmlAttributes = new { @type = "password", @class = "form-control", @placeholder = "Retype password" }})
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger glyphicon glyphicon-log-in form-control-feedback" })
+                    </div>
+                </div>
+                <div class="form-group has-feedback">
+                    @Html.LabelFor(model => model.ContactNo, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10 mb-2 w-100">
+                        @Html.EditorFor(model => model.ContactNo, new { htmlAttributes = new { @type = "number", @class = "form-control", @placeholder = "Contact Number" } })
+                        @Html.ValidationMessageFor(model => model.ContactNo, "", new { @class = "text-danger glyphicon glyphicon-number form-control-feedback" })
+                    </div>
+                </div>
+
+                <div class="form-group has-feedback">
+                    @Html.LabelFor(model => model.Country, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10 mb-2 w-100">
+                        @Html.EditorFor(model => model.Country, new { htmlAttributes = new { @type = "country", @class = "form-control", @placeholder = "Country Name" } })
+                        @Html.ValidationMessageFor(model => model.Country, "", new { @class = "text-danger glyphicon glyphicon-number form-control-feedback" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-4 ">
+                        <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
+                    </div>
+                </div>
+            </form>
+            <div class="social-auth-links text-center">
+                <p>- OR -</p>
+                <div>
+                    <a href="#" class="btn btn-block btn-social btn-facebook btn-flat mb-2 w-100">
+                        <i class="fa fa-facebook"></i> Sign in using Facebook
+                    </a>
+                </div>
+                <div>
+                    <a href="#" class="btn btn-block btn-social btn-google btn-flat w-100">
+                        <i class="fa fa-google-plus"></i> Sign in using Google+
+                    </a>
+                </div>
+            </div>
+            @Html.ActionLink("I already have a membership", "Login", new { @class = "text-danger" })
+        </div>
+    </div>
+}
+
+

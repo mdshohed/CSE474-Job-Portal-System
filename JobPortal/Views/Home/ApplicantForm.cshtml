@@ -1,0 +1,181 @@
+﻿@model JobPortal2.Models.AppliedJob
+
+@{
+    ViewBag.Title = "ApplicantForm";
+}
+
+@using (Html.BeginForm("ApplicantForm", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+        <div class="form-horizontal row">
+            <h4>AppliedJob</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.CompanyName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CompanyName, new { htmlAttributes = new { @class = "form-control", @readonly="true" } })
+                    @Html.ValidationMessageFor(model => model.CompanyName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.JobTitle, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.JobTitle, new { htmlAttributes = new { @class = "form-control", @readonly = "true" } })
+                    @Html.ValidationMessageFor(model => model.JobTitle, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.UserEmail, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.UserEmail, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.UserEmail, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ContactNo, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ContactNo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ContactNo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @*<div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>*@
+            <div class="box-footer clearfix">
+                <button type="submit" class="pull-right btn btn-default" id="sendEmail">
+                    Send<i class="fa fa-arrow-circle-right"></i>
+                </button>
+            </div>
+        </div>
+}
+
+
+
+@*<form action="#" class="bg-white p-5 contact-form">
+        <div class="form-group">
+            <input name="JOBID" type="hidden" value="<?php echo $_GET['job'];?>">
+            <input class="form-control " id="FNAME" name="FNAME" placeholder="Firstname" type="text" value="" onkeyup="javascript:capitalize(this.id, this.value);">
+        </div>
+        <div class="form-group">
+            <input class="form-control " id="LNAME" name="LNAME" placeholder="Lastname" onkeyup="javascript:capitalize(this.id, this.value);">
+        </div>
+        <div class="form-group">
+            <input class="form-control " id="MNAME" name="MNAME" placeholder="Middle Name" onkeyup="javascript:capitalize(this.id, this.value);">
+        </div>
+        <div class="form-group">
+            <textarea class="form-control " id="ADDRESS" name="ADDRESS" placeholder="Address" type="text" value="" required onkeyup="javascript:capitalize(this.id, this.value);"></textarea>
+        </div>
+
+        <div class="form-group">
+            Sex:
+            <input checked id="optionsRadios1" checked="True" name="optionsRadios" type="radio" value="Female">Female
+            <input id="optionsRadios2" name="optionsRadios" type="radio" value="Male"> Male
+        </div>
+
+
+        <div class="form-group">
+            Date of Birth
+            <select class="form-control-2" name="month">
+                <option>Month</option>
+                <?php
+
+                $mon = array('Jan' => 1 ,'Feb'=> 2,'Mar' => 3 ,'Apr'=> 4,'May' => 5 ,'Jun'=> 6,'Jul' => 7 ,'Aug'=> 8,'Sep' => 9 ,'Oct'=> 10,'Nov' => 11 ,'Dec'=> 11 );
+
+
+                foreach ($mon as $month => $value ) {
+
+                # code...
+                echo '
+                <option value='.$value.'>'.$month.'</option>';
+                }
+                ?>
+            </select>
+            <select class="form-control-2" name="day">
+                <option>Day</option>
+                <?php
+                $d = range(31, 1);
+                foreach ($d as $day) {
+                echo '
+                <option value='.$day.'>'.$day.'</option>';
+                }
+
+                ?>
+
+            </select>
+            <select class="form-control-2" name="year">
+                <option>Year</option>
+                <?php
+                $years = range(2010, 1900);
+                foreach ($years as $yr) {
+                echo '
+                <option value='.$yr.'>'.$yr.'</option>';
+                }
+
+                ?>
+
+            </select>
+        </div>
+
+        <div class="form-group">
+            <textarea class="form-control " id="BIRTHPLACE" name="BIRTHPLACE" placeholder="Place of Birth" type="text" value="" required onkeyup="javascript:capitalize(this.id, this.value);"></textarea>
+        </div>
+        <div class="form-group">
+            <input class="form-control " id="TELNO" name="TELNO" placeholder="Contact No." type="text" any value="" required onkeyup="javascript:capitalize(this.id, this.value);">
+        </div>
+        <div class="form-group">
+            <select class="form-control " name="CIVILSTATUS" id="CIVILSTATUS">
+                <option value="none">Select Civil Status</option>
+                <option value="Single">Single</option>
+                <option value="Married">Married</option>
+                <option value="Widow">Widow</option>
+            </select>
+
+        </div>
+        <div class="form-group">
+            <input type="Email" class="form-control " id="EMAILADDRESS" name="EMAILADDRESS" placeholder="Email Address" autocomplete="false" />
+        </div>
+        <div class="form-group">
+            <input class="form-control " id="USERNAME" name="USERNAME" placeholder="Username" onkeyup="javascript:capitalize(this.id, this.value);">
+
+        </div>
+        <div class="form-group">
+            <input class="form-control " id="PASS" name="PASS" placeholder="Password" type="password" onkeyup="javascript:capitalize(this.id, this.value);">
+
+        </div>
+        <div class="form-group">
+            <input class="form-control " id="DEGREE" name="DEGREE" placeholder="Educational Attainment" onkeyup="javascript:capitalize(this.id, this.value);">
+
+        </div>
+
+
+        <div class="form-group">
+            Attach your Resume here.
+            <input id="picture" name="picture" type="file">
+            <input name="MAX_FILE_SIZE" type="hidden" value="1000000">
+        </div>
+
+
+        <div class="form-group">
+            <input type="checkbox"> By Sign up you are agree with our <a href="#">terms and condition</a>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Submit Application" name="submit" class="btn btn-primary py-3 px-5">
+        </div>
+    </form>*@
